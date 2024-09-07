@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumno',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlumnoPage implements OnInit {
 
-  constructor() { }
+  username: string = 'guest'
+  constructor(private router: Router) { 
+    const state = this.router.getCurrentNavigation()?.extras?.state;
+    if(state){
+      this.username = state['user'];
+    } 
+  }
 
   ngOnInit() {
   }
