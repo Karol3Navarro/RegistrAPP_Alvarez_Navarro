@@ -1,0 +1,7 @@
+{
+  "name": "RegistrAPP_P1_Alvarez_Navarro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
