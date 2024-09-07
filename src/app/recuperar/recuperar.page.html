@@ -10,4 +10,22 @@
       <ion-title size="large">Recuperar</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-label color="primary" (click)="goToHome()">Volver</ion-label>
+  <h5>Correo electronico para recuperar Contraseña</h5>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="Correo" label="Email" type="email" labelPlacement="floating" placeholder="email@gmail.com"></ion-input>
+      <div class=""*ngIf="Correo.length < 10 && Correo.length > 0">
+        <ion-label for="" color="danger">error</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-button id="present-alert" expand="block" color="medium">Recuperar Contraseña</ion-button>
+  <ion-alert
+    trigger="present-alert"
+    header="Recuperacion de Contraseña"
+    message="Se ha enviado un mensaje a tu correo. Sigue las instrucciones para recuperar tu contraseña"
+
+  ></ion-alert>
 </ion-content>
