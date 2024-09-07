@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'recuperar',
+    loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'docente',
+    loadChildren: () => import('./docente/docente.module').then( m => m.DocentePageModule)
+  },
+  {
+    path: 'alumno',
+    loadChildren: () => import('./alumno/alumno.module').then( m => m.AlumnoPageModule)
+  },
 ];
 
 @NgModule({
