@@ -20,6 +20,28 @@
   </ion-header>
   <ion-content>
     <ion-list>
+      <ion-item [routerLink]="['/finanzas']">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        Finanzas
+      </ion-item>
+      <ion-item [routerLink]="['/academico']" (click)="togglesubmenu()">
+        <ion-icon name="book-outline" slot="start"></ion-icon>
+        Académico
+        <ion-icon [name]="submenu ? 'chevron-up-outline' : 'chevron-down-outline'" slot="end"></ion-icon>
+      </ion-item>
+      
+      <!-- Submenú Académico -->
+      <ion-list *ngIf="submenu" class="sub-menu">
+        <ion-item [routerLink]="['/horario']">
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          Horario
+        </ion-item>
+        <ion-item [routerLink]="['/notas']">
+          <ion-icon name="stats-chart-outline" slot="start"></ion-icon>
+          Notas
+        </ion-item>
+      </ion-list>
+
       <ion-item (click)="logout()">
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
         Cerrar Sesión
@@ -27,6 +49,7 @@
     </ion-list>
   </ion-content>
 </ion-menu>
+
 
 
 <ion-content [fullscreen]="true" class="content">
