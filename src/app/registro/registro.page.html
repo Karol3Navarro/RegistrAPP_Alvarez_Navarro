@@ -4,10 +4,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="register-container">
+    <ion-card class="register-card">
+      <ion-card-header>
+        <ion-card-title class="card-title">Formulario de Registro</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="description">Por favor, complete el siguiente formulario para crear una nueva cuenta.</p>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="person-outline" slot="start" class="icon"></ion-icon>
+            <ion-input [(ngModel)]="username" label="Usuario" labelPlacement="floating" placeholder="Ingrese su nombre de usuario"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="mail-outline" slot="start" class="icon"></ion-icon>
+            <ion-input [(ngModel)]="email" type="email" label="Correo" labelPlacement="floating"placeholder="Ingrese su correo electrónico"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-closed-outline" slot="start" class="icon"></ion-icon>
+            <ion-input [(ngModel)]="password" type="password" label="Ingrese Clave" labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-open-outline" slot="start" class="icon"></ion-icon>
+            <ion-input [(ngModel)]="confirmPassword" type="password" label="Confirme contraseña" labelPlacement="floating"  placeholder="Confirme su contraseña"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="primary" class="register-btn" (click)="register()">Registrar</ion-button>
+        <ion-label color="secondary" class="login-link" [routerLink]="['/login']">¿Ya tienes una cuenta? Inicia sesión</ion-label>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
