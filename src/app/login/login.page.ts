@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras} from '@angular/router';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -11,26 +11,29 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   
   public username: string;
-  public password: any;
+  public password: string;
 
   constructor(private navCtrl: NavController, private router: Router) { 
-    this.username='';
-    this.password='';
+    this.username = '';
+    this.password = '';
   }
 
   login(){
-    if (this.username=="Docente"&& this.password=="12345"){
-      this.navCtrl.navigateForward(['/docente'], {queryParams: {nombre: 'Docente'}})
-    } if (this.username=="Alumno"&& this.password=="12345"){
+    if (this.username == "Docente" && this.password == "12345") {
       let extras: NavigationExtras = {
         state: { user: this.username }
-      }
+      };
+      this.router.navigate(['/docente'], extras); 
+    } else if (this.username == "Alumno" && this.password == "12345") {
+      let extras: NavigationExtras = {
+        state: { user: this.username }
+      };
       this.router.navigate(['/alumno'], extras);
-    }else{
-      alert('Error')
+    } else {
+      alert('Error: Usuario o contraseña incorrectos');
     }
   }
-
+  
   ngOnInit() {
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-docente',
@@ -7,13 +7,51 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./docente.page.scss'],
 })
 export class DocentePage implements OnInit {
+  username: string = 'guest';
+  submenu: boolean = false;
 
-  nombre: string='';
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router) { 
+    const state = this.router.getCurrentNavigation()?.extras?.state;
+    if (state) {
+      this.username = state['user'];
+    }
+  }
 
-  ngOnInit(): void{
-    this.route.queryParams.subscribe(params =>{
-      this.nombre = params['nombre']||'No existe';
-    })
+  ngOnInit() {}
+
+  openMenu() {
+    const menu = document.querySelector('ion-menu');
+    if (menu) {
+      (menu as HTMLIonMenuElement).open();
+    }
+  }
+
+  togglesubmenu() { 
+    this.submenu = !this.submenu;
+  }
+
+  logout() {
+    console.log('Cerrar sesión');
+    this.router.navigate(['/login']); 
+  }
+
+  viewClasses() {
+    console.log('Ver clases');
+   
+  }
+
+  viewEvaluations() {
+    console.log('Ver evaluaciones');
+  
+  }
+
+  viewAttendance() {
+    console.log('Ver asistencia');
+  
+  }
+
+  viewReports() {
+    console.log('Ver reportes');
+   
   }
 }

@@ -20,7 +20,6 @@ export class RecuperarPage implements OnInit {
   }
 
 }
-//Revisar. Boton de alerta
 export class ExampleComponent {
   alertButtons = ['Action'];
 }

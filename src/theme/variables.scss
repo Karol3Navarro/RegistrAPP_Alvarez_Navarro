@@ -1,2 +1,16 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+  
+    --text-color: #000000;
+    --login-box-bg-color: rgba(255, 255, 255, 0.88);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+     
+      --text-color: #ffffff;
+      --login-box-bg-color: rgba(0, 0, 0, 0.85);
+    }
+  }
+  
