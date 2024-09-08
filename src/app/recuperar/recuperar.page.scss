@@ -1,0 +1,36 @@
+.recovery-card {
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recovery-card ion-card-title {
+    font-size: 24px;
+    color: var(--ion-color-primary);
+  }
+  
+  .recovery-card ion-card-subtitle {
+    color: var(--ion-color-medium);
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    margin: 15px 0;
+    text-align: center;
+  }
+  
+  .error-message ion-label {
+    color: var(--ion-color-danger);
+  }
+  
+  ion-button {
+    margin-top: 20px;
+  }
+  ion-content {
+
+	--background: url('https://sectorinbalorgcom.wordpress.com/wp-content/uploads/2016/11/wallpaper-gratis-de-fondo-de-ondas-en-azul-en-hd.jpg')
+		0 0/100% 100% no-repeat;
+}
+    

@@ -1,31 +1,53 @@
-<ion-header [translucent]="true">
+<ion-header translucent="true">
   <ion-toolbar>
-    <ion-title>Recuperar</ion-title>
+    <ion-title>Recuperar Contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-label  (click)="goToHome()">
+    <ion-icon name="arrow-back-outline"></ion-icon> Volver
+  </ion-label>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Recuperar</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-label color="primary" (click)="goToHome()">Volver</ion-label>
-  <h5>Correo electronico para recuperar Contraseña</h5>
-  <ion-list>
-    <ion-item>
-      <ion-input [(ngModel)]="Correo" label="Email" type="email" labelPlacement="floating" placeholder="email@gmail.com"></ion-input>
-      <div class=""*ngIf="Correo.length < 10 && Correo.length > 0">
-        <ion-label for="" color="danger">error</ion-label>
-      </div>
-    </ion-item>
-  </ion-list>
-  <ion-button id="present-alert" expand="block" color="medium">Recuperar Contraseña</ion-button>
-  <ion-alert
-    trigger="present-alert"
-    header="Recuperacion de Contraseña"
-    message="Se ha enviado un mensaje a tu correo. Sigue las instrucciones para recuperar tu contraseña"
+  <ion-card class="recovery-card">
+    <ion-card-header>
+      <ion-card-title>Recuperar Contraseña</ion-card-title>
+      <ion-card-subtitle>Introduce tu correo electrónico para recuperar tu contraseña.</ion-card-subtitle>
+    </ion-card-header>
 
-  ></ion-alert>
+    <ion-card-content>
+     
+
+      <ion-list>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="Correo"
+            type="email"
+            label="Email"
+            labelPlacement="floating"
+            placeholder="email@gmail.com"
+            clearInput
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="error-message" *ngIf="Correo.length > 0 && Correo.length < 10">
+        <ion-label color="danger">Por favor, introduce un correo electrónico válido.</ion-label>
+      </div>
+
+      <ion-button expand="block" color="medium" id="present-alert">Recuperar Contraseña</ion-button>
+
+      <ion-alert
+        trigger="present-alert"
+        header="Recuperación de Contraseña"
+        message="Se ha enviado un mensaje a tu correo. Sigue las instrucciones para recuperar tu contraseña."
+      ></ion-alert>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
