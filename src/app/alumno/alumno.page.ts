@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AlumnoPage implements OnInit {
   username: string = 'guest';
-  submenu: boolean = false; // Agrega esta propiedad
+  submenu: boolean = false; 
 
   constructor(private router: Router) { 
     const state = this.router.getCurrentNavigation()?.extras?.state;
@@ -27,7 +27,7 @@ export class AlumnoPage implements OnInit {
     }
   }
 
-  togglesubmenu() { // Asegúrate de tener esta función
+  togglesubmenu() { 
     this.submenu = !this.submenu;
   }
 
