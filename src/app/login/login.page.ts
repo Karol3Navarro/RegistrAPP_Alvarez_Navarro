@@ -33,6 +33,9 @@ export class LoginPage implements OnInit {
       alert('Error: Usuario o contraseña incorrectos');
     }
   }
+  openUrl(url: string) {
+    window.open(url, '_blank');
+  }
   
   ngOnInit() {
   }

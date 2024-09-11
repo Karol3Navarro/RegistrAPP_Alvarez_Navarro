@@ -56,3 +56,13 @@ ion-toolbar {
   --color: #ffffff;
   --background: #000000;
 }
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons ion-icon {
+  font-size: 34px;
+  margin: 0 10px;
+ 
+  cursor: pointer;
+}
