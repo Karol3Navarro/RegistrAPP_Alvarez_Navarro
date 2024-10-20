@@ -62,46 +62,25 @@
   <h3>Bienvenido {{ username }}</h3>
 
 
-  <div class="icon-grid">
-    <ion-card class="icon-card">
-      <ion-icon name="calendar-outline" class="icon"></ion-icon>
-      <h4>Horario</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="clipboard-outline" class="icon"></ion-icon>
-      <h4>Asistencia</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="stats-chart-outline" class="icon"></ion-icon>
-      <h4>Calificaciones</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="briefcase-outline" class="icon"></ion-icon>
-      <h4>Cursos</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="cash-outline" class="icon"></ion-icon>
-      <h4>Finanzas</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="document-text-outline" class="icon"></ion-icon>
-      <h4>Certificados</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="mail-outline" class="icon"></ion-icon>
-      <h4>Email</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="book-outline" class="icon"></ion-icon>
-      <h4>Perfil Académico</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="pencil-outline" class="icon"></ion-icon>
-      <h4>Tareas</h4>
-    </ion-card>
-    <ion-card class="icon-card">
-      <ion-icon name="chatbubbles-outline" class="icon"></ion-icon>
-      <h4>Mensajes</h4>
+  <h2 class="header-text">Cursos</h2>
+  
+  <div class="course-container">
+    <!-- Mostrar cada curso usando *ngFor -->
+    <ion-card class="custom-card" *ngFor="let curso of cursos">
+      <ion-card-header>
+        <ion-card-title class="card-title">{{ curso.nombre }}</ion-card-title> <!-- Nombre del curso -->
+        <p class="course-sigla">{{ curso.sigla }}</p> <!-- Sigla del curso -->
+        
+        <!-- Imagen del curso -->
+        <img src="{{ curso.imagen }}" alt="{{ curso.nombre }}" class="curso-imagen"> 
+        
+        <p class="course-institucion">{{ curso.institucion }}</p> <!-- Institución -->
+        
+        <!-- Botón "Ingresar" -->
+        <ion-button color="secondary" expand="full" (click)="ingresarCurso(curso.id)">
+          Ingresar
+        </ion-button>
+      </ion-card-header>
     </ion-card>
   </div>
 </ion-content>
