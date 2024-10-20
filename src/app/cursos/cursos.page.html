@@ -2,24 +2,21 @@
   <h2 class="header-text">Cursos</h2>
   
   <div class="course-container">
-   
-    <ion-card class="custom-card">
+    <!-- Mostrar cada curso usando *ngFor -->
+    <ion-card class="custom-card" *ngFor="let curso of cursos">
       <ion-card-header>
-        <ion-card-title class="card-title">Programación de Aplicaciones Móviles</ion-card-title>
+        <ion-card-title class="card-title">{{ curso.nombre }}</ion-card-title> <!-- Nombre del curso -->
+        <p class="course-sigla">{{ curso.sigla }}</p> <!-- Sigla del curso -->
+        <p class="course-institucion">{{ curso.institucion }}</p> <!-- Institución -->
       </ion-card-header>
-      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso('programacion')">Ingresar</ion-button>
-    </ion-card>
-    
-  
-    <ion-card class="custom-card">
-      <ion-card-header>
-        <ion-card-title class="card-title">Desarrollo Web</ion-card-title>
-      
-      </ion-card-header>
-      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso('web')">Ingresar</ion-button>
-    </ion-card>
 
-  
+      <!-- Descripción del curso -->
+      <ion-card-content>
+        <p>{{ curso.descripcion }}</p>
+      </ion-card-content>
+
+      <!-- Botón para ingresar al curso -->
+      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso(curso.id)">Ingresar</ion-button>
+    </ion-card>
   </div>
-  
 </ion-content>
