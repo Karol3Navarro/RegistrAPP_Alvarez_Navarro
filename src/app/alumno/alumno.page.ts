@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumno',
@@ -7,17 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./alumno.page.scss'],
 })
 export class AlumnoPage implements OnInit {
-  username: string = 'guest';
+  username: string = '';
   submenu: boolean = false; 
 
-  constructor(private router: Router) { 
-    const state = this.router.getCurrentNavigation()?.extras?.state;
-    if (state) {
-      this.username = state['user'];
-    } 
+  constructor(private router: Router, private route: ActivatedRoute) { 
   }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.route.queryParams.subscribe(params=>{
+       this.username = params['nombre']||'No existe';
+    })
   }
 
   openMenu() {
