@@ -14,12 +14,13 @@
   
   .custom-card {
     width: 300px;
-    height: 150px; 
+    height: 350px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     background-color: #ffffff; 
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
+    opacity: 88%;
   }
   
   .card-title {

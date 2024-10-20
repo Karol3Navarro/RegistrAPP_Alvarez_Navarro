@@ -10,31 +10,35 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  
   public username: string;
   public password: string;
 
-  constructor(private navCtrl: NavController, private router: Router, private presenteprofe : PresenteprofeService) { 
+  constructor(private navCtrl: NavController, private router: Router, private presenteprofe: PresenteprofeService) {
     this.username = '';
     this.password = '';
   }
 
-  onLogin(){
+  onLogin() {
     this.presenteprofe.login(this.username, this.password).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
-        if (response.data.perfil == "docente"){
-          this.navCtrl.navigateForward(['/docente'], {queryParams: {nombre: response.data.nombre}})
-        }if(response.data.perfil == "estudiante"){
-          this.navCtrl.navigateForward(['/alumno'], {queryParams: {nombre: response.data.nombre}})
+        if (response.data.perfil == "docente") {
+          localStorage.setItem('usuario', this.username);
+          this.navCtrl.navigateForward(['/docente'], { queryParams: { nombre: response.data.nombre } });
+        } else if (response.data.perfil == "estudiante") {
+          localStorage.setItem('usuario', this.username);
+          this.navCtrl.navigateForward(['/alumno'], { queryParams: { nombre: response.data.nombre } });
         }
+      },
+      (error) => {
+        console.error('Error de inicio de sesión', error);
       }
-    )
-  }
-  openUrl(url:string){
-    window.open(url, '_balck');
-  }
-  ngOnInit() {
+    );
   }
 
+  openUrl(url: string) {
+    window.open(url, '_balck');
+  }
+
+  ngOnInit() {}
 }

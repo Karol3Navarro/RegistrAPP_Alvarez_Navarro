@@ -7,18 +7,22 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
   styleUrls: ['./cursos.page.scss'],
 })
 export class CursosPage implements OnInit {
-
   cursos: any[] = [];  // Aquí se guardarán los cursos obtenidos
-  usuario: string = 'profesor@presenteprofe.cl';  // Aquí puedes definir el usuario que desees
+  usuario: string | null = null;  // Cambiar a null inicialmente
 
   constructor(private presenteprofeService: PresenteprofeService) {}
 
   ngOnInit() {
-    this.cargarCursos();  // Cargar los cursos al iniciar el componente
+    this.usuario = localStorage.getItem('usuario');  // Obtener el usuario de localStorage
+    if (this.usuario) {
+      this.cargarCursos();  // Cargar los cursos si el usuario no es null
+    } else {
+      console.error('No se encontró un usuario válido');
+    }
   }
 
   cargarCursos() {
-    this.presenteprofeService.getCursos(this.usuario).subscribe(
+    this.presenteprofeService.getCursos(this.usuario!).subscribe(  // Asegúrate de usar el operador de afirmación no nulo (!)
       (response) => {
         this.cursos = response.cursos;  // Asignamos los cursos obtenidos a la variable 'cursos'
         console.log(this.cursos);  // Muestra los cursos en la consola

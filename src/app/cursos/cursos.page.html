@@ -7,16 +7,18 @@
       <ion-card-header>
         <ion-card-title class="card-title">{{ curso.nombre }}</ion-card-title> <!-- Nombre del curso -->
         <p class="course-sigla">{{ curso.sigla }}</p> <!-- Sigla del curso -->
+        
+        <!-- Imagen del curso -->
+        <img src="{{ curso.imagen }}" alt="{{ curso.nombre }}" class="curso-imagen"> 
+        
         <p class="course-institucion">{{ curso.institucion }}</p> <!-- Institución -->
+        
+        <!-- Botón "Ingresar" -->
+        <ion-button color="secondary" expand="full" (click)="ingresarCurso(curso.id)">
+          Ingresar
+        </ion-button>
       </ion-card-header>
-
-      <!-- Descripción del curso -->
-      <ion-card-content>
-        <p>{{ curso.descripcion }}</p>
-      </ion-card-content>
-
-      <!-- Botón para ingresar al curso -->
-      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso(curso.id)">Ingresar</ion-button>
     </ion-card>
   </div>
 </ion-content>
+
