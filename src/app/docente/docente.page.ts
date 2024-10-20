@@ -13,7 +13,7 @@ export class DocentePage implements OnInit {
   cursos: any[] = [];
   constructor(private router: Router, private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) { 
   }
-
+  //Holis
   ngOnInit() {
     this.route.queryParams.subscribe(params=>{
        this.username = params['nombre']||'No existe';
