@@ -1,24 +1,25 @@
-<ion-content class="ion-padding custom-content">
-  <h2 class="header-text">Cursos</h2>
-  
-  <div class="course-container">
-    <!-- Mostrar cada curso usando *ngFor -->
-    <ion-card class="custom-card" *ngFor="let curso of cursos">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="curso">
+    <ion-card>
       <ion-card-header>
-        <ion-card-title class="card-title">{{ curso.nombre }}</ion-card-title> <!-- Nombre del curso -->
-        <p class="course-sigla">{{ curso.sigla }}</p> <!-- Sigla del curso -->
-        
-        <!-- Imagen del curso -->
-        <img src="{{ curso.imagen }}" alt="{{ curso.nombre }}" class="curso-imagen"> 
-        
-        <p class="course-institucion">{{ curso.institucion }}</p> <!-- Institución -->
-        
-        <!-- Botón "Ingresar" -->
-        <ion-button color="secondary" expand="full" (click)="ingresarCurso(curso.id)">
-          Ingresar
-        </ion-button>
+        <ion-card-title>{{ curso.nombre }}</ion-card-title>
       </ion-card-header>
+      <ion-card-content>
+        <img [src]="curso.imagen" alt="{{ curso.nombre }}" class="curso-imagen" />
+        <p><strong>Descripción:</strong> {{ curso.descripcion ? curso.descripcion : 'No disponible' }}</p>
+        <p><strong>Profesor:</strong> {{ curso.usuario.nombre_completo }}</p>
+        <img [src]="curso.usuario.img" alt="{{ curso.usuario.nombre }}" class="usuario-imagen" />
+        <p><strong>Correo:</strong> {{ curso.usuario.correo }}</p>
+      </ion-card-content>
     </ion-card>
   </div>
+  <div *ngIf="!curso">
+    <p>No se encontraron datos del curso.</p>
+  </div>
 </ion-content>
-

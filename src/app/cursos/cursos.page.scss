@@ -1,36 +1,14 @@
-  
-  .header-text {
-    text-align: center;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .course-container {
-    display: flex;
-    justify-content: space-around; 
-    flex-wrap: wrap; 
-  }
-  
-  .custom-card {
-    width: 300px;
-    height: 350px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    background-color: #ffffff; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
-    opacity: 88%;
-  }
-  
-  .card-title {
-    font-size: 18px; 
-    color: #333;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  
+.curso-imagen {
+  width: 100%;
+  height: auto;
+}
+
+.usuario-imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 
  
   

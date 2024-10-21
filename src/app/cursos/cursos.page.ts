@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PresenteprofeService } from '../services/presenteprofe.service';
 
 @Component({
@@ -7,34 +8,29 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
   styleUrls: ['./cursos.page.scss'],
 })
 export class CursosPage implements OnInit {
-  cursos: any[] = [];  // Aquí se guardarán los cursos obtenidos
-  usuario: string | null = null;  // Cambiar a null inicialmente
+  curso: any;
 
-  constructor(private presenteprofeService: PresenteprofeService) {}
+  constructor(private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) { }
 
   ngOnInit() {
-    this.usuario = localStorage.getItem('usuario');  // Obtener el usuario de localStorage
-    if (this.usuario) {
-      this.cargarCursos();  // Cargar los cursos si el usuario no es null
-    } else {
-      console.error('No se encontró un usuario válido');
-    }
+    this.route.queryParams.subscribe(params => {
+      const cursoId = params['id'];
+      if (cursoId) {
+        this.cargarCursoPorId(cursoId);
+      }
+    });
   }
-
-  cargarCursos() {
-    this.presenteprofeService.getCursos(this.usuario!).subscribe(  // Asegúrate de usar el operador de afirmación no nulo (!)
+  cargarCursoPorId(cursoId: string) {
+    this.presenteprofeService.getCursoById(cursoId).subscribe(
       (response) => {
-        this.cursos = response.cursos;  // Asignamos los cursos obtenidos a la variable 'cursos'
-        console.log(this.cursos);  // Muestra los cursos en la consola
+        console.log('Respuesta de la API:', response); // Verifica la respuesta de la API
+        this.curso = response.data; // Asignar los datos del curso
+        console.log(this.curso); // Para verificar que los datos se cargan correctamente
       },
       (error) => {
-        console.error('Error al cargar los cursos', error);
+        console.error('Error al cargar el curso', error);
       }
     );
   }
-
-  ingresarCurso(cursoId: string) {
-    console.log('Ingresando al curso con ID:', cursoId);
-    // Lógica adicional para ingresar al curso
-  }
+  
 }
