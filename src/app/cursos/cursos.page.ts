@@ -8,7 +8,8 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
   styleUrls: ['./cursos.page.scss'],
 })
 export class CursosPage implements OnInit {
-  curso: any;
+  curso: any;  // Aquí almacenaremos el curso cargado
+  selectedSegment: string = 'mi-espacio';  // Segmento por defecto
 
   constructor(private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) {}
 
@@ -23,11 +24,15 @@ export class CursosPage implements OnInit {
     this.presenteprofeService.getCursoById(cursoId).subscribe(
       (response) => {
         console.log('Respuesta de la API:', response); // Para depuración
-        this.curso = response.data; // Asignar el curso obtenido
+        this.curso = response.data ? response.data : response; // Ajustar según la estructura de la API
       },
       (error) => {
         console.error('Error al cargar el curso', error);
       }
     );
+  }
+
+  onSegmentChange(event: any) {
+    this.selectedSegment = event.detail.value;  // Actualiza el segmento seleccionado
   }
 }

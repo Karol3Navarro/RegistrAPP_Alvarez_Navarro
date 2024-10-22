@@ -38,6 +38,7 @@ export class DocentePage implements OnInit {
   }
 
   ingresarCurso(cursoId: string) {
+    this.router.navigate(['/cursos']); 
     console.log('Ingresando al curso con ID:', cursoId);
     // Lógica adicional para ingresar al curso
   }
@@ -57,23 +58,7 @@ export class DocentePage implements OnInit {
     this.router.navigate(['/login']); 
   }
 
-  viewClasses() {
-    console.log('Ver clases');
-   
-  }
+ 
 
-  viewEvaluations() {
-    console.log('Ver evaluaciones');
   
-  }
-
-  viewAttendance() {
-    console.log('Ver asistencia');
-  
-  }
-
-  viewReports() {
-    console.log('Ver reportes');
-   
-  }
 }

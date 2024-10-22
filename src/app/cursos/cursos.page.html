@@ -1,7 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Detalles del Curso</ion-title>
-  </ion-toolbar>
+
+
+  <!-- Navbar en la parte superior usando ion-segment -->
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange($event)">
+    <ion-segment-button value="mi-espacio">
+      <ion-label>Mi espacio</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="editar">
+      <ion-label>Editar</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="matricula">
+      <ion-label>Matrícula</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="clases">
+      <ion-label>Clases</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="calendario">
+      <ion-label>Calendario</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="anuncios">
+      <ion-label>Anuncios</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content>
@@ -19,7 +44,15 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <div *ngIf="!curso">
-    <p>No se encontraron datos del curso.</p>
+
+
+  <!-- Mostrar contenido basado en el segmento seleccionado -->
+  <div [ngSwitch]="selectedSegment">
+    <div *ngSwitchCase="'mi-espacio'">Contenido de Mi Espacio</div>
+    <div *ngSwitchCase="'editar'">Contenido de Editar</div>
+    <div *ngSwitchCase="'matricula'">Contenido de Matrícula</div>
+    <div *ngSwitchCase="'clases'">Contenido de Clases</div>
+    <div *ngSwitchCase="'calendario'">Contenido de Calendario</div>
+    <div *ngSwitchCase="'anuncios'">Contenido de Anuncios</div>
   </div>
 </ion-content>
