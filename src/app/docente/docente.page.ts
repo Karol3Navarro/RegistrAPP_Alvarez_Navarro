@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PresenteprofeService } from '../services/presenteprofe.service';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-docente',
   templateUrl: './docente.page.html',
@@ -11,7 +13,7 @@ export class DocentePage implements OnInit {
   submenu: boolean = false;
   usuario: string | null = null;
   cursos: any[] = [];
-  constructor(private router: Router, private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) { 
+  constructor(private router: Router, private route: ActivatedRoute, private presenteprofeService: PresenteprofeService, private navCtrl: NavController) { 
   }
 
   ngOnInit() {
@@ -38,8 +40,23 @@ export class DocentePage implements OnInit {
   }
   
   ingresarCurso(cursoId: string) {
-    console.log('Ingresando al curso con ID:', cursoId);
-    this.router.navigate(['/cursos'], { queryParams: { id: cursoId } });
+    this.presenteprofeService.getCursoById(this.usuario!, cursoId).subscribe(
+      (response) => {
+        console.log(response);
+        if (response.curso.id == cursoId) {
+
+          this.navCtrl.navigateForward(['/cursos'], { 
+            queryParams: { 
+              curso: response.curso.id, 
+              nombre: response.curso.nombre,
+              imagen: response.curso.imagen
+            } 
+          });
+          }
+      },(error) => {
+        console.error('Error de inicio de sesión', error);
+
+    })
   }
   
   

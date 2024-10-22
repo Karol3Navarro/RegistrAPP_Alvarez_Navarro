@@ -23,9 +23,11 @@ export class PresenteprofeService {
     const params = new HttpParams().set('user', username); // Aquí se configuran los parámetros de la URL
     return this.http.get<any>(url, { params });  // Pasamos los parámetros en el objeto de opciones
   }
-  getCursoById(cursoId: string): Observable<any> {
+  getCursoById(username: string, cursoId: string): Observable<any> {
     const url = `${this.apiURL}/cursos/${cursoId}`; // Asegúrate de que 'apiURL' y 'cursos' sean correctos
-    return this.http.get<any>(url);  // Llamada a la API para obtener el curso
+    const params = new HttpParams().set('user', username);// NUEVO
+    //return this.http.get<any>(url);  // Llamada a la API para obtener el curso
+    return this.http.get<any>(url, { params });
   }
   getCursos2(username: string) {
     return this.http.get(`${this.apiURL}/cursos?user=${username}`);
