@@ -10,27 +10,24 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
 export class CursosPage implements OnInit {
   curso: any;
 
-  constructor(private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) { }
+  constructor(private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const cursoId = params['id'];
-      if (cursoId) {
-        this.cargarCursoPorId(cursoId);
-      }
-    });
+    const cursoId = this.route.snapshot.queryParams['id']; // Obtener el ID del curso de los parámetros de la ruta
+    if (cursoId) {
+      this.cargarCursoPorId(cursoId);
+    }
   }
+
   cargarCursoPorId(cursoId: string) {
     this.presenteprofeService.getCursoById(cursoId).subscribe(
       (response) => {
-        console.log('Respuesta de la API:', response); // Verifica la respuesta de la API
-        this.curso = response.data; // Asignar los datos del curso
-        console.log(this.curso); // Para verificar que los datos se cargan correctamente
+        console.log('Respuesta de la API:', response); // Para depuración
+        this.curso = response.data; // Asignar el curso obtenido
       },
       (error) => {
         console.error('Error al cargar el curso', error);
       }
     );
   }
-  
 }

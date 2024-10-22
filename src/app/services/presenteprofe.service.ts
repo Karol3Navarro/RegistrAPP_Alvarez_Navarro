@@ -18,17 +18,16 @@ export class PresenteprofeService {
     };
     return this.http.post(url, payload);
   }
-
   getCursos(username: string): Observable<any> {
     const url = `${this.apiURL}/cursos`;  
-    const params = new HttpParams().set('user', username);
-    return this.http.get<any>(url, { params });
+    const params = new HttpParams().set('user', username); // Aquí se configuran los parámetros de la URL
+    return this.http.get<any>(url, { params });  // Pasamos los parámetros en el objeto de opciones
   }
-
   getCursoById(cursoId: string): Observable<any> {
     const url = `${this.apiURL}/cursos/${cursoId}`; // Asegúrate de que 'apiURL' y 'cursos' sean correctos
     return this.http.get<any>(url);  // Llamada a la API para obtener el curso
   }
   
+
   
 }
