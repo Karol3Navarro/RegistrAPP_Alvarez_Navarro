@@ -27,6 +27,9 @@ export class PresenteprofeService {
     const url = `${this.apiURL}/cursos/${cursoId}`; // Asegúrate de que 'apiURL' y 'cursos' sean correctos
     return this.http.get<any>(url);  // Llamada a la API para obtener el curso
   }
+  getCursos2(username: string) {
+    return this.http.get(`${this.apiURL}/cursos?user=${username}`);
+  }
   
 
   

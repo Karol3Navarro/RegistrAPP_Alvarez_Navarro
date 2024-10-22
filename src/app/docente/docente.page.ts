@@ -36,12 +36,13 @@ export class DocentePage implements OnInit {
       }
     );
   }
-
+  
   ingresarCurso(cursoId: string) {
-    this.router.navigate(['/cursos']); 
     console.log('Ingresando al curso con ID:', cursoId);
-    // Lógica adicional para ingresar al curso
+    this.router.navigate(['/cursos'], { queryParams: { id: cursoId } });
   }
+  
+  
   openMenu() {
     const menu = document.querySelector('ion-menu');
     if (menu) {

@@ -1,17 +1,26 @@
-.curso-imagen {
-  width: 100%;
-  height: auto;
+ion-header {
+  --background: #3880ff; /* Fondo del encabezado con color primario */
 }
 
-.usuario-imagen {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+ion-text {
+  margin-top: 20px; /* Margen superior para el texto de encabezado */
 }
 
+.qr-container {
+  display: flex;
+  justify-content: center; /* Centra el QR en la pantalla */
+  align-items: center;
+  margin-top: 40px; /* Margen superior para separar el QR del input */
+}
 
- 
-  
-  ion-content {
-    --background: url('https://media.istockphoto.com/id/1353473723/es/foto/fondo-abstracto-de-movimiento-borroso-desenfocado-amarillo-y-naranja-soleado.jpg?s=612x612&w=0&k=20&c=szFbBBCrxvfx9E0AGDVBOP6F4gRSH6zliCQcKPxJKrE=') 0 0 / 100% 100% no-repeat;
+ion-item {
+  margin: 20px;
+  border-radius: 8px;
+  --background: #f0f0f5; /* Fondo más claro para el input */
+  --color-focused: #3880ff; /* Color del borde cuando se enfoca */
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }

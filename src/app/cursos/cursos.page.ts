@@ -8,31 +8,35 @@ import { PresenteprofeService } from '../services/presenteprofe.service';
   styleUrls: ['./cursos.page.scss'],
 })
 export class CursosPage implements OnInit {
-  curso: any;  // Aquí almacenaremos el curso cargado
-  selectedSegment: string = 'mi-espacio';  // Segmento por defecto
+  curso: any;
+  selectedSegment: string = 'mi-espacio';
+  qrData: string | null = null;
 
   constructor(private route: ActivatedRoute, private presenteprofeService: PresenteprofeService) {}
 
   ngOnInit() {
-    const cursoId = this.route.snapshot.queryParams['id']; // Obtener el ID del curso de los parámetros de la ruta
-    if (cursoId) {
-      this.cargarCursoPorId(cursoId);
-    }
+    this.route.params.subscribe((params) => {
+      this.curso = params;
+      console.log(this.curso);
+    });
   }
 
-  cargarCursoPorId(cursoId: string) {
-    this.presenteprofeService.getCursoById(cursoId).subscribe(
-      (response) => {
-        console.log('Respuesta de la API:', response); // Para depuración
-        this.curso = response.data ? response.data : response; // Ajustar según la estructura de la API
-      },
-      (error) => {
-        console.error('Error al cargar el curso', error);
-      }
-    );
-  }
+  // cargarCursoPorId(cursoId: string) {
+  //   this.presenteprofeService.getCursos2(cursoId).subscribe(
+  //     (response) => {
+  //       console.log('Respuesta de la API:', response);
+  //       this.curso = response.data ? response.data : response;
+  //     },
+  //     (error) => {
+  //       console.error('Error al cargar el curso', error);
+  //     }
+  //   );
+  // }
 
-  onSegmentChange(event: any) {
-    this.selectedSegment = event.detail.value;  // Actualiza el segmento seleccionado
+  generarQR() {
+    // Genera un QR con un contenido fijo o dinámico
+    this.qrData = `QR generado el: ${new Date().toLocaleString()}`; // Puedes cambiar el contenido a lo que necesites
+    console.log('Generar QR:', this.qrData);
   }
+  
 }
